@@ -1,14 +1,18 @@
-import { useState } from "react";
-import { PostBodyPropsType } from "../../Data_Types/Home_Components";
+import { useState, useContext } from "react";
+import { PostContentType } from "../../Data_Types/Home_Components";
 import IonIcon from '@reacticons/ionicons';
+import { PostContext } from "../../Context/Posts";
 
 
 
-
-function Post_Body({ user, PostContentAndState, setPostComment, setIsCommentBoxVisible }: PostBodyPropsType) {
+function Post_Body({ user }: {user: PostContentType}) {
     
+    const{ PostCommentAndState, IsCommentBoxVisibleAndState, PostContentAndState } = useContext(PostContext);
+
     const{ postContent, setPostContent } = PostContentAndState;
-    const[currentImgIndex, setCurrentImgIndex] = useState(0);
+    const{ setPostComment } = PostCommentAndState;
+    const{ setIsCommentBoxVisible } = IsCommentBoxVisibleAndState;
+    const[currentImgIndex, setCurrentImgIndex] = useState<number>(0);
 
 
 

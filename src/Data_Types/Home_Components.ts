@@ -56,41 +56,35 @@ export interface PostContentType {
 }
 
 
-export interface PostBodyPropsType {
-    user: PostContentType;
-    PostContentAndState: {
-        postContent: PostContentType[];
-        setPostContent: React.Dispatch<React.SetStateAction<PostContentType[]>>;
-    }
-    setPostComment: React.Dispatch<React.SetStateAction<PostContentType | undefined>>;
-    setIsCommentBoxVisible: React.Dispatch<React.SetStateAction<boolean>>;
+
+
+export interface PostContentAndStateType {
+    postContent: PostContentType[], 
+    setPostContent: React.Dispatch<React.SetStateAction<PostContentType[]>>
 } 
 
 
-export interface PostCommentProps {
-    postComment: PostContentType | undefined;
-    isCommentBoxVisibleAndState: {
-        isCommentBoxVisible: boolean;
-        setIsCommentBoxVisible: React.Dispatch<React.SetStateAction<boolean>>;
-    };
-    PostContentAndState: {
-        postContent: PostContentType[];
-        setPostContent: React.Dispatch<React.SetStateAction<PostContentType[]>>;
-    };
 
+export interface PostContextProviderPropsType {
+    children: React.ReactNode;
 }
 
 
-export interface LeftSideCommentsBoxProps {
-    postComment: PostContentType | undefined;
-    isCommentBoxVisible: boolean;
-}
-
-
-export interface RightSideCommentBoxProps {
-    postComment: PostContentType | undefined;
+export interface PostValuesType {
     PostContentAndState: {
-        postContent: PostContentType[];
-        setPostContent: React.Dispatch<React.SetStateAction<PostContentType[]>>;
-    };
+        postContent: PostContentType[],
+        setPostContent:  React.Dispatch<React.SetStateAction<PostContentType[]>>
+    },
+
+    PostCommentAndState: {
+        postComment: PostContentType | undefined, 
+        setPostComment: React.Dispatch<React.SetStateAction<PostContentType | undefined>>
+    },
+
+    IsCommentBoxVisibleAndState: {
+        isCommentBoxVisible: boolean, 
+        setIsCommentBoxVisible: React.Dispatch<React.SetStateAction<boolean>>
+
+    }
+
 }

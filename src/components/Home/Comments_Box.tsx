@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import IonIcon from "@reacticons/ionicons";
-import {
-    PostCommentProps, LeftSideCommentsBoxProps, RightSideCommentBoxProps 
-} from "../../Data_Types/Home_Components";
+import { PostContext } from "../../Context/Posts";
+import { handle_like_comment_icon } from "../../handler/Home_Handlers";
 
 
 
 
-function Comments_Box({ postComment, isCommentBoxVisibleAndState, PostContentAndState }: PostCommentProps)  {
+function Comments_Box()  {
 
-    const{ isCommentBoxVisible, setIsCommentBoxVisible } = isCommentBoxVisibleAndState;
+    const{ IsCommentBoxVisibleAndState } = useContext(PostContext);
+    const{ isCommentBoxVisible, setIsCommentBoxVisible } = IsCommentBoxVisibleAndState;
 
     
     return (
@@ -28,15 +28,9 @@ function Comments_Box({ postComment, isCommentBoxVisibleAndState, PostContentAnd
             />
     
             <article className="Comments_Box">
-                <LeftSideCommentsBox 
-                    postComment={postComment}
-                    isCommentBoxVisible={isCommentBoxVisible}
-                />
+                <LeftSideCommentsBox />
                 
-                <RightSideCommentBox 
-                    postComment={postComment}
-                    PostContentAndState={PostContentAndState}
-                />
+                <RightSideCommentBox />
             </article>
         </section>
     )
@@ -46,8 +40,12 @@ function Comments_Box({ postComment, isCommentBoxVisibleAndState, PostContentAnd
 
 
 
-function LeftSideCommentsBox({ postComment, isCommentBoxVisible }: LeftSideCommentsBoxProps) {
+function LeftSideCommentsBox() {
     const[currentImgIndex, setCurrentImgIndex] = useState<number>(0);
+
+    const{ PostCommentAndState, IsCommentBoxVisibleAndState } = useContext(PostContext);
+    const{ postComment } = PostCommentAndState;
+    const{ isCommentBoxVisible } = IsCommentBoxVisibleAndState;
 
 
     const hanlde_left_img_btn = () => {
@@ -66,7 +64,7 @@ function LeftSideCommentsBox({ postComment, isCommentBoxVisible }: LeftSideComme
     
 
     useEffect(() => {
-        if(isCommentBoxVisible == false) {
+        if(isCommentBoxVisible === false) {
             const timeoutId = setTimeout(() => {
                 setCurrentImgIndex(0);
             }, 500)
@@ -114,8 +112,9 @@ function LeftSideCommentsBox({ postComment, isCommentBoxVisible }: LeftSideComme
 
                     return (
                         <img 
-                        key={imgIndex}
+                            key={imgIndex}
                             src={img}
+                            alt="none"
                             className={position}
                         />
                     )
@@ -128,39 +127,19 @@ function LeftSideCommentsBox({ postComment, isCommentBoxVisible }: LeftSideComme
 
 
 
-function RightSideCommentBox({ postComment, PostContentAndState }:RightSideCommentBoxProps) {
+function RightSideCommentBox() {
 
-    // const[likeComment, setLikeComment] = useState<"heart" | "heart-outline">("heart-outline");
-    const{ postContent, setPostContent } = PostContentAndState;
-
-
-    const handle_like_comment_icon = (userCommentId: string) => {
-        postContent.filter((user) => {
-            if(user.id === postComment?.id) {    
-                postComment.comment.map((com, i) => {
-                    if(com.id === userCommentId) {
-                        if(com.like.liked === false){
-                            com.like.liked = true;
-                            com.like.num++;
-                        } else {
-                            com.like.liked = false;
-                            com.like.num--;
-                        }
-                    }
-                })
-            }
-        })
-
-        setPostContent([...postContent]);
-    }
+    const{ PostCommentAndState, PostContentAndState } = useContext(PostContext);
+    const{ postComment } = PostCommentAndState;
 
 
+   
 
     return (
         <section className="Right_Side_Comments_Box">
             <header className="Top_Comment_Section">
                 <div>
-                    <img src={postComment?.profile} />
+                    <img src={postComment?.profile} alt="none" />
                     <p>{postComment?.name}</p>
                 </div>
 
@@ -170,12 +149,15 @@ function RightSideCommentBox({ postComment, PostContentAndState }:RightSideComme
             <article className="Center_Comment_Section">
                 {
                     postComment?.comment.map((com, i) => {
+                        // console.log(com);
+                        
                         return (
                             <ul className="User_Comment" key={com.id}>
 
                                 <li className="User_Comment_Img">
                                     <img 
                                         src={com.userImg}  
+                                        alt="none"
                                         className="User_Comment_Img"
                                     />
                                 </li>
@@ -195,7 +177,9 @@ function RightSideCommentBox({ postComment, PostContentAndState }:RightSideComme
                                         <IonIcon 
                                             className="Like_Comment_Ic" 
                                             name={com.like.liked ? "heart" : "heart-outline"}
-                                            onClick={() => handle_like_comment_icon(com.id)} 
+                                            onClick={
+                                                () => handle_like_comment_icon(postComment.id, com.id, PostContentAndState, postComment)
+                                            } 
                                         />
                                     </div>
 
@@ -220,32 +204,130 @@ function RightSideCommentBox({ postComment, PostContentAndState }:RightSideComme
 
 export { Comments_Box };
 
+
 /* 
-                <ul className="User_Comment">
-                    <img 
-                        src={postComment?.Comment[0].reply[0].userImg}  
-                    />
+const handle_like_comment_icon = (postId: string, commentId: string) => {
+  const updatedPosts = postContent.map((post) => {
+    if (post.id === postId) {
+      const updatedComments = post.comment.map((comment) => {
+        if (comment.id === commentId) {
+          const updatedLike = {
+            liked: !comment.like.liked,
+            num: comment.like.liked ? comment.like.num - 1 : comment.like.num + 1
+          };
+          return { ...comment, like: updatedLike };
+        }
+        return comment;
+      });
+      return { ...post, comment: updatedComments };
+    }
+    return post;
+  });
 
-                    <li className="Center_Single_Comment">
-                        <div className="Comment_Text">
-                            <p>Lara Croft: </p>
+  setPostContent(updatedPosts);
+};
 
-                            <p>
-                                The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.
-                            </p>
-                        </div>
 
-                        <div className="Like_Reply_Comment">
-                            <p>454 Likes</p>
-                            <p className="Reply_Text">Reply</p>
-                            <IonIcon className="Like_Comment_Ic" name={likeComment} />
-                        </div>
+const handle_like_comment_icon = (postId: string, commentId: string) => {
+    const updatedPosts = postContent.map((post) => {
+        if (post.id === postId) {
+            const updatedComments = post.comment.map((comment) => {
+                if (comment.id === commentId) {
+                    console.log(comment);
+                    
+                    const updatedLike = {
+                        liked: !comment.like.liked,
+                        num: comment.like.liked ? comment.like.num - 1 : comment.like.num + 1
+                    };
 
-                        <div className="View_Replies">
-                            <p className="View_Text">View Replies(9)</p>
-                        </div>
-                    </li>
+                    return { ...comment, like: updatedLike };
+                }
+                return comment;
+            });
 
-                </ul>
+            return { ...post, comment: updatedComments };
+        }
+        return post;
+    });
+    
+    setPostContent(updatedPosts);
+};
+
+
+
+________________________________________________________________________________________________________________________________
+-mine
+const handle_like_comment_icon = (postId: string, userCommentId: string) => {
+    postContent.map((post) => {
+        if(post.id === postId) {    
+            const updateComments = post.comment.map((commentPost, i) => {
+                if(commentPost.id === userCommentId) {
+                    return {
+                        ...commentPost,
+                        like: {
+                            liked: !commentPost.like.liked,
+                            num: commentPost.like.liked ? commentPost.like.num - 1 : commentPost.like.num + 1,
+                        }
+                    };
+                }
+                return commentPost;
+            });
+
+            return { ...post, comment: updateComments }
+        }
+        return post;
+    });
+
+
+
+const handle_like_comment_icon = (userCommentId: string) => {
+    postContent.filter((user) => {
+        if(user.id === postComment?.id) {    
+            postComment.comment.map((com, i) => {
+                if(com.id === userCommentId) {
+                    if(com.like.liked === false){
+                        com.like.liked = true;
+                        com.like.num++;
+                    } else {
+                        com.like.liked = false;
+                        com.like.num--;
+                    }
+
+                    // console.log(com.id);
+                }
+            })
+        }
+    })
+
+    setPostContent([...postContent]);
+}
+
+
+
+
+
+    const handle_like_comment_icon = (postId: string, userCommentId: string) => {
+        postContent.map((post) => {
+            if(post.id === postId) {    
+                const updateComments = post.comment.map((commentPost, i) => {
+                    if(commentPost.id === userCommentId) {
+                        if(commentPost.id === userCommentId) {
+                            if(commentPost.like.liked === false){
+                                commentPost.like.liked = true;
+                                commentPost.like.num++;
+                            } else {
+                                commentPost.like.liked = false;
+                                commentPost.like.num--;
+                            }
+                        }
+                        return commentPost;
+                    }
+                });
+                return { ...post, comment: updateComments }
+            }
+            return post;
+        });
+    } 
+
 
 */

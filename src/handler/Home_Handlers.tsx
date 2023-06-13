@@ -1,4 +1,6 @@
-import{ HandleSliderScrollType } from "../Data_Types/Home_Components";
+import{ 
+    HandleSliderScrollType, PostContentAndStateType, PostContentType
+} from "../Data_Types/Home_Components";
 
 
 
@@ -36,7 +38,38 @@ const handle_right_btn = (sliderRef: React.MutableRefObject<null>) => {
 };
   
 
+const handle_like_comment_icon = (
+    postId: string, userCommentId: string,
+    PostContentAndState: PostContentAndStateType,
+    postComment: PostContentType | undefined
+) => {
+
+    const{ postContent, setPostContent } = PostContentAndState;
+
+    const updatePost = postContent.map((post) => {
+        if(post.id === postId) {    
+            postComment!.comment.map((commentPost, i) => {
+                if(commentPost.id === userCommentId) {
+                    if(commentPost.like.liked === false){
+                        commentPost.like.liked = true;
+                        commentPost.like.num++;
+                    } else {
+                        commentPost.like.liked = false;
+                        commentPost.like.num--;
+                    }
+                }
+                return commentPost;
+            })
+        }
+        return post;
+    })
+
+    setPostContent([...updatePost]);
+}
+
+
 
 export {
-    handle_slider_scroll, handle_left_btn, handle_right_btn
+    handle_slider_scroll, handle_left_btn, handle_right_btn, 
+    handle_like_comment_icon
 };
