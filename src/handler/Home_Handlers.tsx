@@ -3,7 +3,6 @@ import{
 } from "../Data_Types/Home_Components";
 
 
-
 const handle_slider_scroll = (
     {event, setShowLeftBtn, setShowRightBtn}: HandleSliderScrollType
 ) => {
@@ -31,6 +30,7 @@ const handle_left_btn = (sliderRef: React.MutableRefObject<null>) => {
     const slider = sliderRef.current as unknown as HTMLElement;
     slider.scrollLeft -= 200;
 };
+
   
 const handle_right_btn = (sliderRef: React.MutableRefObject<null>) => {
     const slider = sliderRef.current as unknown as HTMLElement;
@@ -77,6 +77,7 @@ const hanlde_left_img_btn_body = (
     }
 }
 
+
 const hanlde_right_img_btn_body = (
     user: PostContentType,
     currentImgIndex:number, 
@@ -84,12 +85,8 @@ const hanlde_right_img_btn_body = (
 ) => {
     if(currentImgIndex < user.imgs.length - 1) {
         setCurrentImgIndex(currentImgIndex + 1);
-    }}
-
-
-
-
-
+    }
+}
 
 
 const hanlde_left_img_btn_comment = (
@@ -101,6 +98,7 @@ const hanlde_left_img_btn_comment = (
     }
 }
 
+
 const hanlde_right_img_btn_comment = (
     postComment: PostContentType | undefined, 
     currentImgIndex:number, 
@@ -111,7 +109,6 @@ const hanlde_right_img_btn_comment = (
         setCurrentImgIndex(currentImgIndex + 1);
     }
 }
-
 
 
 const handle_like_icon = (
@@ -134,6 +131,7 @@ const handle_like_icon = (
     });        
 };
 
+
 const handle_save_icon = (
     postId: string,
     postContent: PostContentType[], 
@@ -152,7 +150,6 @@ const handle_save_icon = (
 
     setPostContent([...postContent]);
 };
-
 
 
 export {
