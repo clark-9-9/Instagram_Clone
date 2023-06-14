@@ -2,6 +2,10 @@ import { useState, useContext } from "react";
 import { PostContentType } from "../../Data_Types/Home_Components";
 import IonIcon from '@reacticons/ionicons';
 import { PostContext } from "../../Context/Posts";
+import { 
+    handle_like_icon, handle_save_icon, 
+    hanlde_left_img_btn_body, hanlde_right_img_btn_body
+ } from "../../handler/Home_Handlers";
 
 
 
@@ -14,57 +18,7 @@ function Post_Body({ user }: {user: PostContentType}) {
     const{ setIsCommentBoxVisible } = IsCommentBoxVisibleAndState;
     const[currentImgIndex, setCurrentImgIndex] = useState<number>(0);
 
-
-
-
-    const handle_like_icon = (postId: string): void => {
-        postContent.filter((user, i) => { 
-            if(user.id === postId) {
-                if(user.like.liked === false) {
-                    user.like.liked = true;
-                    user.like.num++; 
-                } else {
-                    user.like.liked = false;
-                    user.like.num--; 
-                }
-            }
-
-            setPostContent([...postContent]);
-        });        
-    };
-
-    const handle_save_icon = (postId: string): void => {
-        postContent.filter((user, i) => { 
-            if(user.id === postId) {
-                if(user.save === false) {
-                    user.save = true;
-                } else {
-                    user.save = false;
-                }
-
-            }
-        });     
-
-        setPostContent([...postContent]);
-    };
-
-
-
-
-    const hanlde_left_img_btn = () => {
-        if(currentImgIndex > 0) {
-            setCurrentImgIndex(currentImgIndex - 1);
-        }
-    }
-
-    const hanlde_right_img_btn = () => {
-        if(currentImgIndex < user.imgs.length - 1) {
-            setCurrentImgIndex(currentImgIndex + 1);
-        }
-    }
-
     
-
     
     return (
         <section className="Post_Body">
@@ -76,21 +30,20 @@ function Post_Body({ user }: {user: PostContentType}) {
                 
                 <button 
                     style={{ display: user.imgs.length <= 1 ? "none" : "block" }}  
-                    onClick={hanlde_left_img_btn}
+                    onClick={() => hanlde_left_img_btn_body(currentImgIndex, setCurrentImgIndex)}
                 >
                     <IonIcon name="chevron-back-outline" />
                 </button>
                 
                 <button
                     style={{ display: user.imgs.length <= 1 ? "none" : "block" }}  
-                    onClick={hanlde_right_img_btn}
+                    onClick={() => hanlde_right_img_btn_body(user, currentImgIndex, setCurrentImgIndex)}
                 >
                     <IonIcon name="chevron-forward-outline" />
                 </button>
                 
                 {
                     user.imgs.map((img, imgIndex) => {
-
                         let position: string = "Prev_Slide";
 
                         if(currentImgIndex === imgIndex) {
@@ -108,7 +61,7 @@ function Post_Body({ user }: {user: PostContentType}) {
                                 className={position}
 
                                 // className={imgIndex === currentImgIndex ? "Active_Slide" : imgIndex === currentImgIndex + 1 ? "Next_Slide" : "Prev_Slide"}
-                                onDoubleClick={() => handle_like_icon(user.id)}
+                                onDoubleClick={() => handle_like_icon(user.id, postContent, setPostContent)}
                             />
                         )
                     })
@@ -132,21 +85,18 @@ function Post_Body({ user }: {user: PostContentType}) {
                                 } 
                                 onClick={(e) => {
                                     if(icon.name === "heart-outline" || icon.name === "heart") {
-                                        handle_like_icon(user.id);
+                                        handle_like_icon(user.id, postContent, setPostContent);
                                     }
 
                                     if(icon.name === "bookmark-outline" || icon.name === "bookmark") {
-                                        handle_save_icon(user.id);
+                                        handle_save_icon(user.id, postContent, setPostContent);
                                     }
 
                                     if(icon.name === "chatbubbles-outline") {
                                         setPostComment(user);
                                         setIsCommentBoxVisible((prop) => {
-                                            if(prop === false) {
-                                                return true;
-                                            } else {
-                                                return false;
-                                            }
+                                            if(prop === false) return true;
+                                            else return false;
                                         })
                                     }
                                 }}

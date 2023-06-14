@@ -1,7 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import IonIcon from "@reacticons/ionicons";
 import { PostContext } from "../../Context/Posts";
-import { handle_like_comment_icon } from "../../handler/Home_Handlers";
+import { 
+    handle_like_comment_icon, hanlde_left_img_btn_comment, hanlde_right_img_btn_comment 
+} from "../../handler/Home_Handlers";
 
 
 
@@ -48,18 +50,6 @@ function LeftSideCommentsBox() {
     const{ isCommentBoxVisible } = IsCommentBoxVisibleAndState;
 
 
-    const hanlde_left_img_btn = () => {
-        if(currentImgIndex > 0) {
-            setCurrentImgIndex(currentImgIndex - 1);
-        }
-    }
-
-    const hanlde_right_img_btn = () => {
-        const imgs = postComment && postComment.imgs ? postComment.imgs : ""
-        if(currentImgIndex < imgs.length - 1) {
-            setCurrentImgIndex(currentImgIndex + 1);
-        }
-    }
 
     
 
@@ -82,7 +72,7 @@ function LeftSideCommentsBox() {
                     display: (postComment && postComment.imgs ? postComment.imgs.length : 0) <= 1 
                     ? "none" : "block" 
                 }}  
-                onClick={hanlde_left_img_btn}
+                onClick={() => hanlde_left_img_btn_comment(currentImgIndex, setCurrentImgIndex)}
             >
                 <IonIcon name="chevron-back-outline" />
             </button>
@@ -92,7 +82,7 @@ function LeftSideCommentsBox() {
                     display: (postComment && postComment.imgs ? postComment.imgs.length : 0) <= 1 
                     ? "none" : "block" 
                 }}  
-                onClick={hanlde_right_img_btn}
+                onClick={() => hanlde_right_img_btn_comment(postComment, currentImgIndex, setCurrentImgIndex)}
             >
                 <IonIcon name="chevron-forward-outline" />
             </button>
@@ -132,7 +122,6 @@ function RightSideCommentBox() {
     const{ PostCommentAndState, PostContentAndState } = useContext(PostContext);
     const{ postComment } = PostCommentAndState;
 
-
    
 
     return (
@@ -149,7 +138,6 @@ function RightSideCommentBox() {
             <article className="Center_Comment_Section">
                 {
                     postComment?.comment.map((com, i) => {
-                        // console.log(com);
                         
                         return (
                             <ul className="User_Comment" key={com.id}>
