@@ -8,6 +8,7 @@
     /* height: calc(100vh - 44px); */
     /* min-height: 100vh; */
 }
+
 /* 
 const pageSection = {
     width: screenWidth > 1260 ? "calc(100vw - 245px)" 
@@ -572,7 +573,13 @@ const pageSection = {
     /* height: calc(70% - 65px); */
     height: 80%;
     width: 100%;
-    /* border: 1px solid white; */
+    overflow-y: scroll;
+    border: 1px solid white;
+}
+
+
+.Center_Comment_Section::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -603,8 +610,6 @@ const pageSection = {
     /* border: 1px solid white; */
     
 }
-
-
 
 
 .Comment_Text * {

@@ -38,6 +38,60 @@ const icons: IconsType[] = [
     },
 ]
 
+
+const Posts_Content: PostContentType[] = [
+    {
+        id: nanoid(),
+        profile: profile1,
+        name: "elizabeth",
+        userName: "Justin Bieber",
+        imgs:[post1, post2, post3, post4],
+        imgSize: "4/5",
+        icons,
+        like: {
+            liked: false,
+            num : 34653,
+        },
+        save: false,
+        comment: EachComment(),
+        caption: `In the quiet stillness of the morning, the sun began to rise above the horizon, casting a warm glow across the land. The trees swayed gently in the breeze, their leaves rustling softly in the wind. Birds chirped and sang, filling the air with their joyful melodies. It was a peaceful moment, a moment to savor and enjoy.`,
+    },
+    {
+        id: nanoid(),
+        profile: userRepliedImg,
+        name: "ariana_Julie",
+        userName: "Justin Bieber",
+        imgs: [post2],
+        imgSize: "1/1",
+        icons,
+        like: {
+            liked: false,
+            num : 34653,
+        },
+        save: false,
+        comment: EachComment(),
+        caption: `In the quiet stillness of the morning, the sun began to rise above the horizon, casting a warm glow across the land. The trees swayed gently in the breeze, their leaves rustling softly in the wind. Birds chirped and sang, filling the air with their joyful melodies. It was a peaceful moment, a moment to savor and enjoy.`,
+    },
+    {
+        id: nanoid(),
+        profile: profile3,
+        name: "angilina",
+        userName: "Justin Bieber",
+        imgs:[post5, post6, post7],
+        imgSize: "4/5",
+        icons,
+        like: {
+            liked: false,
+            num : 34653,
+        },
+        save: false,
+        comment: EachComment(),
+        caption: `In the quiet stillness of the morning, the sun began to rise above the horizon, casting a warm glow across the land. The trees swayed gently in the breeze, their leaves rustling softly in the wind. Birds chirped and sang, filling the air with their joyful melodies. It was a peaceful moment, a moment to savor and enjoy.`,
+    },
+]
+
+
+
 function EachComment(): Comments[] {
 
     const comment = [
@@ -122,62 +176,91 @@ function EachComment(): Comments[] {
                 },
             ]
         },
+        {
+            id: nanoid(),
+            userName: "Gotham Chess",
+            userImg: userRepliedImg,
+            text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+            like: {
+                liked: false,
+                num: 12
+            },
+            reply: [
+                {
+                    userName: "reply 1",
+                    userImg: userRepliedImg,
+                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                },
+                {
+                    userName: "reply 2",
+                    userImg: userRepliedImg,
+                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                },
+                {
+                    userName: "reply 3",
+                    userImg: userRepliedImg,
+                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                },
+            ]
+        },
+        {
+            id: nanoid(),
+            userName: "Hikaru",
+            userImg: userRepliedImg,
+            text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+            like: {
+                liked: false,
+                num: 12
+            },
+            reply: [
+                {
+                    userName: "reply 1",
+                    userImg: userRepliedImg,
+                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                },
+                {
+                    userName: "reply 2",
+                    userImg: userRepliedImg,
+                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                },
+                {
+                    userName: "reply 3",
+                    userImg: userRepliedImg,
+                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                },
+            ]
+        },
+        {
+            id: nanoid(),
+            userName: "Jakck",
+            userImg: userRepliedImg,
+            text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+            like: {
+                liked: false,
+                num: 12
+            },
+            reply: [
+                {
+                    userName: "reply 1",
+                    userImg: userRepliedImg,
+                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                },
+                {
+                    userName: "reply 2",
+                    userImg: userRepliedImg,
+                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                },
+                {
+                    userName: "reply 3",
+                    userImg: userRepliedImg,
+                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                },
+            ]
+        },
     ];
 
     return comment;
 }
-
-const Posts_Content: PostContentType[] = [
-    {
-        id: nanoid(),
-        profile: profile1,
-        name: "elizabeth",
-        userName: "Justin Bieber",
-        imgs:[post1, post2, post3, post4],
-        imgSize: "4/5",
-        icons,
-        like: {
-            liked: false,
-            num : 34653,
-        },
-        save: false,
-        comment: EachComment(),
-        caption: `In the quiet stillness of the morning, the sun began to rise above the horizon, casting a warm glow across the land. The trees swayed gently in the breeze, their leaves rustling softly in the wind. Birds chirped and sang, filling the air with their joyful melodies. It was a peaceful moment, a moment to savor and enjoy.`,
-    },
-    {
-        id: nanoid(),
-        profile: userRepliedImg,
-        name: "ariana_Julie",
-        userName: "Justin Bieber",
-        imgs: [post2],
-        imgSize: "1/1",
-        icons,
-        like: {
-            liked: false,
-            num : 34653,
-        },
-        save: false,
-        comment: EachComment(),
-        caption: `In the quiet stillness of the morning, the sun began to rise above the horizon, casting a warm glow across the land. The trees swayed gently in the breeze, their leaves rustling softly in the wind. Birds chirped and sang, filling the air with their joyful melodies. It was a peaceful moment, a moment to savor and enjoy.`,
-    },
-    {
-        id: nanoid(),
-        profile: profile3,
-        name: "angilina",
-        userName: "Justin Bieber",
-        imgs:[post5, post6, post7],
-        imgSize: "4/5",
-        icons,
-        like: {
-            liked: false,
-            num : 34653,
-        },
-        save: false,
-        comment: EachComment(),
-        caption: `In the quiet stillness of the morning, the sun began to rise above the horizon, casting a warm glow across the land. The trees swayed gently in the breeze, their leaves rustling softly in the wind. Birds chirped and sang, filling the air with their joyful melodies. It was a peaceful moment, a moment to savor and enjoy.`,
-    },
-]
-
 
 
 
