@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"
 import { NavLink } from "react-router-dom";
 import { Icons } from "../../data/icons";
-import { Menu_Box } from "./Menu_Box";
+import { MenuBox } from "./Menu_Box";
 import { SideBarContext } from "../../Context/Side_Bar";
 import { MenuBoxStateType } from "../../Data_Types/Side_Bar_Components";
 import { SideBar_Links } from "../../data/Side_Bar_Links";
@@ -26,7 +26,7 @@ function Links() {
         bottom: "3rem"
     });
 
-    
+
 
 
     return (
@@ -56,7 +56,7 @@ function Links() {
                     SideBar_Links.map((link, i) => {
                         if(link.text !== "Search" && link.text !== "Notification" && link.text !== "Menu") {
                             return (
-                                <NavLink to="/" className={link.class} key={i}
+                                <NavLink to={link.to} className={link.class} key={i}
                                     onClick={() => {
                                         handle_close_search_box(setSearchBoxMargin, screenWidth);
                                         handle_close_notification_box(setNotificationBoxMargin, screenWidth);
@@ -78,13 +78,13 @@ function Links() {
                                 <div className={link.class} key={i}
                                     onClick={() => {
                                         if(link.text === "Search") 
-                                            handle_search_box(screenWidth, searchBoxMargin, setSearchBoxMargin, setNotificationBoxMargin);
+                                            handle_search_box(screenWidth, setSearchBoxMargin, setNotificationBoxMargin);
                                         else 
-                                            handle_notification_box(screenWidth, notificationBoxMargin, setNotificationBoxMargin, setSearchBoxMargin);
+                                            handle_notification_box(screenWidth, setNotificationBoxMargin, setSearchBoxMargin);
 
                                         handle_close_menu_box(setMenuBoxStyle);
                                     }}
-                                >
+                                > 
                                     {link.icon}
                                     <p style={linkTextNameStyle(screenWidth, searchBoxMargin, notificationBoxMargin)}>Search</p>
                                 </div>
@@ -94,9 +94,8 @@ function Links() {
                         if(link.text === "Menu") {
                             return (
                                 <div className="Menu_Link" key={i}>
-                                    <Menu_Box 
+                                    <MenuBox 
                                         menuBoxStyle={menuBoxStyle}
-                                        
                                     />
 
                                     <div  className={link.class} onClick={() => handle_menu_box(setMenuBoxStyle)}>
@@ -106,7 +105,10 @@ function Links() {
                                 </div>
                             )
                         }
+
+                        return undefined;
                     })
+
                 }
 
             </article>

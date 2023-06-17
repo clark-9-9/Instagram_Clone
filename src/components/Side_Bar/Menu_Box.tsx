@@ -6,7 +6,7 @@ import { MenuBoxProps } from "../../Data_Types/Side_Bar_Components";
 import { menuBoxLinks } from "../../data/Menu_Box_Links";
 
 
-function Menu_Box({ menuBoxStyle }: MenuBoxProps) {
+function MenuBox({ menuBoxStyle }: MenuBoxProps) {
 
     
     return (
@@ -39,5 +39,5 @@ function Menu_Box({ menuBoxStyle }: MenuBoxProps) {
 
 
 
-export { Menu_Box };
+export { MenuBox };
 

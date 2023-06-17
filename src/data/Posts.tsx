@@ -50,7 +50,7 @@ const Posts_Content: PostContentType[] = [
         icons,
         like: {
             liked: false,
-            num : 34653,
+            num : 5463,
         },
         save: false,
         comment: EachComment(),
@@ -66,7 +66,7 @@ const Posts_Content: PostContentType[] = [
         icons,
         like: {
             liked: false,
-            num : 34653,
+            num : 2400,
         },
         save: false,
         comment: EachComment(),
@@ -77,12 +77,12 @@ const Posts_Content: PostContentType[] = [
         profile: profile3,
         name: "angilina",
         userName: "Justin Bieber",
-        imgs:[post5, post6, post7],
+        imgs:[post5, post6, post7], 
         imgSize: "4/5",
         icons,
         like: {
             liked: false,
-            num : 34653,
+            num : 3013,
         },
         save: false,
         comment: EachComment(),
@@ -94,31 +94,33 @@ const Posts_Content: PostContentType[] = [
 
 function EachComment(): Comments[] {
 
+    let text: string = "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.";
+
     const comment = [
         {
             id: nanoid(),
             userName: "Anna Cramlen",
             userImg: userRepliedImg,
-            text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+            text: text,
             like: {
                 liked: true,
-                num: 12
+                num: 452
             },
             reply: [
                 {
                     userName: "reply 1",
                     userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                    text: text,
                 },
                 {
                     userName: "reply 2",
                     userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                    text: text,
                 },
                 {
-                    userName: "reply 1",
+                    userName: "reply 3",
                     userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                    text: text,
                 },
             ]
         },
@@ -126,26 +128,16 @@ function EachComment(): Comments[] {
             id: nanoid(),
             userName: "Botez Sister",
             userImg: userRepliedImg,
-            text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+            text: text,
             like: {
                 liked: false,
-                num: 53,
+                num: 523,
             },
             reply: [
                 {
-                    userName: "reply 1",
+                    userName: "reply 3",
                     userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
-                },
-                {
-                    userName: "reply 2",
-                    userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
-                },
-                {
-                    userName: "reply 1",
-                    userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                    text: text,
                 },
             ]
         },
@@ -153,53 +145,33 @@ function EachComment(): Comments[] {
             id: nanoid(),
             userName: "Magnus",
             userImg: userRepliedImg,
-            text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+            text: text,
             like: {
                 liked: false,
                 num: 12
             },
             reply: [
-                {
-                    userName: "reply 1",
-                    userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
-                },
-                {
-                    userName: "reply 2",
-                    userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
-                },
-                {
-                    userName: "reply 3",
-                    userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
-                },
             ]
         },
         {
             id: nanoid(),
             userName: "Gotham Chess",
             userImg: userRepliedImg,
-            text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+            text: text,
             like: {
                 liked: false,
-                num: 12
+                num: 1212
             },
             reply: [
                 {
-                    userName: "reply 1",
-                    userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
-                },
-                {
                     userName: "reply 2",
                     userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                    text: text,
                 },
                 {
                     userName: "reply 3",
                     userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                    text: text,
                 },
             ]
         },
@@ -207,53 +179,37 @@ function EachComment(): Comments[] {
             id: nanoid(),
             userName: "Hikaru",
             userImg: userRepliedImg,
-            text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+            text: text,
             like: {
                 liked: false,
-                num: 12
+                num: 437
             },
-            reply: [
-                {
-                    userName: "reply 1",
-                    userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
-                },
-                {
-                    userName: "reply 2",
-                    userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
-                },
-                {
-                    userName: "reply 3",
-                    userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
-                },
-            ]
+            reply: []
         },
         {
             id: nanoid(),
             userName: "Jakck",
             userImg: userRepliedImg,
-            text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+            text: text,
             like: {
                 liked: false,
-                num: 12
+                num: 664
             },
             reply: [
                 {
                     userName: "reply 1",
                     userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                    text: text,
                 },
                 {
                     userName: "reply 2",
                     userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                    text: text,
                 },
                 {
                     userName: "reply 3",
                     userImg: userRepliedImg,
-                    text: "The dark side is a powerful force that can corrupt even the strongest of wills. It is a place of fear, anger, and hatred. Those who succumb to the dark side are lost to the light.",
+                    text: text,
                 },
             ]
         },

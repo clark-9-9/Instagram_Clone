@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import { PostContentType, PostContextProviderPropsType, PostValuesType } from "../Data_Types/Home_Components";
 import { Posts_Content } from '../data/Posts';
 
@@ -32,6 +32,8 @@ const PostContextProvider: React.FC<PostContextProviderPropsType> = ({ children 
     const[postContent, setPostContent] = useState<PostContentType[]>(Posts_Content);    
     const[postComment, setPostComment] = useState<PostContentType | undefined>(undefined);
     const[isCommentBoxVisible, setIsCommentBoxVisible] = useState<boolean>(false);
+
+
 
     
     return (

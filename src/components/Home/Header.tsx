@@ -10,7 +10,7 @@ import { handle_notification_box } from "../../handler/Links_Handler";
 function Header() {
     
     const{ screenWidth, searchBoxMarginAndState, notificationBoxMarginAndState } = useContext(SideBarContext);
-    const{ notificationBoxMargin, setNotificationBoxMargin } = notificationBoxMarginAndState;
+    const{ setNotificationBoxMargin } = notificationBoxMarginAndState;
     const{ setSearchBoxMargin } = searchBoxMarginAndState;
 
     return (
@@ -25,7 +25,7 @@ function Header() {
                 </NavLink>
 
                 <div 
-                    onClick={() => handle_notification_box(screenWidth, notificationBoxMargin, setNotificationBoxMargin, setSearchBoxMargin)}
+                    onClick={() => handle_notification_box(screenWidth, setNotificationBoxMargin, setSearchBoxMargin)}
                 >
                     <IonIcon name="heart-outline" />
                 </div>

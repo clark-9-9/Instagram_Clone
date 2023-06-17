@@ -23,12 +23,13 @@ function Search() {
             searchBox.style.visibility = "visible"
             setSearchBoxMargin("-25rem");
         }
-    }, [screenWidth])
+    }, [screenWidth, setSearchBoxMargin])
 
     
     
     return (
         <section 
+            // ref={searchBox}
             className="Search_Box"
             style={{ 
                 marginLeft: searchBoxMargin,
@@ -57,7 +58,7 @@ function Search() {
                     <p>Clear all</p>
                 </div>
 
-                <Searched_Users 
+                <SearchedUsers 
                     inputSearch={inputSearch}
                 />
             </article>
@@ -70,7 +71,7 @@ function Search() {
 
 
 
-function Searched_Users({ inputSearch }: Searched_Users_Props) {
+function SearchedUsers({ inputSearch }: Searched_Users_Props) {
 
     // const filteredUsers = Users.filter((user) => {
     //     return user.name.includes(inputSearch);
@@ -87,6 +88,7 @@ function Searched_Users({ inputSearch }: Searched_Users_Props) {
                                 <article key={i} className="User">
                                     <img 
                                         src={user.img} 
+                                        alt="none"
                                         className="User_Image"
                                     /> 
 
@@ -98,6 +100,8 @@ function Searched_Users({ inputSearch }: Searched_Users_Props) {
                             )
                         }
                     }
+
+                    return undefined;
                 })
             }
         </section>

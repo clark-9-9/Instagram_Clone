@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { Post_Header } from "./Post_Header";
-import { Post_Body } from "./Post_Body";
-import { Post_Bottom } from "./Post_Bottom";
-import { Comments_Box } from "./Comments_Box";
+import { PostHeader } from "./Post_Header";
+import { PostBody } from "./Post_Body";
+import { PostBottom } from "./Post_Bottom";
+import { CommentsBox } from "./Comments_Box";
 import { PostContext, PostContextProvider } from "../../Context/Posts";
 
 
@@ -14,6 +14,9 @@ function Posts() {
     const{ PostContentAndState } = useContext(PostContext);
     const{ postContent } = PostContentAndState;
 
+
+
+
     return (
         <PostContextProvider>
             <section className='Posts'>
@@ -22,15 +25,15 @@ function Posts() {
                         return (
                             <article className="Post" key={i}>
 
-                                <Post_Header 
+                                <PostHeader 
                                     user={user}
                                 />
 
-                                <Post_Body 
+                                <PostBody 
                                     user={user}
                                 />
 
-                                <Post_Bottom 
+                                <PostBottom 
                                     user={user}
                                 />
                             </article>
@@ -38,7 +41,7 @@ function Posts() {
                     })    
                 }
                 
-                <Comments_Box />
+                <CommentsBox />
 
             </section>
         </PostContextProvider>

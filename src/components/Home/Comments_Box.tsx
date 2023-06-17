@@ -1,18 +1,21 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import IonIcon from "@reacticons/ionicons";
 import { PostContext } from "../../Context/Posts";
 import { 
     handle_like_comment_icon, hanlde_left_img_btn_comment, hanlde_right_img_btn_comment 
 } from "../../handler/Home_Handlers";
+// import userRepliedImg from "../../Images/Default_full_body_a_young_woman_with_a_mane_of_blonde_hair_her_2_146707eb-7564-4052-935b-e912f245ad47_1.jpg";
+import { Comments } from "../../Data_Types/Home_Components";
 
 
 
 
-function Comments_Box()  {
+function CommentsBox()  {
 
     const{ IsCommentBoxVisibleAndState } = useContext(PostContext);
     const{ isCommentBoxVisible, setIsCommentBoxVisible } = IsCommentBoxVisibleAndState;
 
+    
     
     return (
         <section 
@@ -119,7 +122,7 @@ function LeftSideCommentsBox() {
 
 function RightSideCommentBox() {
 
-    const{ PostCommentAndState, PostContentAndState } = useContext(PostContext);
+    const{ PostCommentAndState } = useContext(PostContext);
     const{ postComment } = PostCommentAndState;
 
    
@@ -135,51 +138,7 @@ function RightSideCommentBox() {
                 <IonIcon name="ellipsis-horizontal" className="ellipsis_horizontal"/>
             </header>
 
-            <article className="Center_Comment_Section">
-                {
-                    postComment?.comment.map((com, i) => {
-                        
-                        return (
-                            <ul className="User_Comment" key={com.id}>
-                                <li className="User_Comment_Img">
-                                    <img 
-                                        src={com.userImg}  
-                                        alt="none"
-                                        className="User_Comment_Img"
-                                    />
-                                </li>
-
-                                <li className="Center_Single_Comment">
-                                    <div className="Comment_Text">
-                                        <p>{com.userName}: </p>
-
-                                        <p>
-                                            {com.text}
-                                        </p>
-                                    </div>
-
-                                    <div className="Like_Reply_Comment">
-                                        <p>{com.like.num} Likes</p>
-                                        <p className="Reply_Text">Reply</p>
-                                        <IonIcon 
-                                            className="Like_Comment_Ic" 
-                                            name={com.like.liked ? "heart" : "heart-outline"}
-                                            onClick={
-                                                () => handle_like_comment_icon(postComment.id, com.id, PostContentAndState, postComment)
-                                            } 
-                                        />
-                                    </div>
-
-                                    <div className="View_Replies">
-                                        <p className="View_Text">View Replies(9)</p>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        )
-                    })
-                }
-            </article>
+            <CenterCommentSection />
 
             <footer className="Bottom_Comment_Section">
 
@@ -188,5 +147,146 @@ function RightSideCommentBox() {
     )
 }
 
+function CenterCommentSection() {
+    const{ PostCommentAndState, PostContentAndState } = useContext(PostContext);
+    const{ postComment } = PostCommentAndState;
 
-export { Comments_Box };
+    return (
+        <article className="Center_Comment_Section">
+            {
+                postComment?.comment.map((commentPost, i) => {
+                    return (
+                        <ul className="User_Comment" key={commentPost.id}>
+                            <li className="User_Comment_Img">
+                                <img 
+                                    src={commentPost.userImg}  
+                                    alt="none"
+                                    className="User_Comment_Img"
+                                />
+                            </li>
+
+                            <li className="Center_Single_Comment">
+                                <div className="Comment_Text">
+                                    <p>{commentPost.userName}: </p>
+                                    <p>{commentPost.text}</p>
+                                </div>
+
+                                <div className="Like_Reply_Comment">
+                                    <p>{commentPost.like.num} Likes</p>
+                                    <p className="Reply_Text">Reply</p>
+                                    <IonIcon 
+                                        className="Like_Comment_Ic" 
+                                        name={commentPost.like.liked ? "heart" : "heart-outline"}
+                                        onClick={
+                                            () => handle_like_comment_icon(postComment.id, commentPost.id, PostContentAndState, postComment)
+                                        } 
+                                    />
+                                </div>
+
+                                <ViewReplies 
+                                    commentPost={commentPost}
+                                />
+                            </li>
+
+                        </ul>
+                    )
+                })
+            }
+        </article>
+    )
+}
+
+
+function ViewReplies({ commentPost }: {commentPost: Comments}) {
+
+    const viewReplyRef = useRef<HTMLUListElement | null>(null);
+    const{ PostCommentAndState } = useContext(PostContext);
+    const{ postComment } = PostCommentAndState;
+
+
+
+
+    const hanlde_show_reply_comment = (postCommentId: string) => {
+        postComment?.comment.map((comment) => {
+            if(comment.id === postCommentId) {
+                if(viewReplyRef && viewReplyRef.current) {
+                    viewReplyRef.current.style.display === "none"
+                    ? viewReplyRef.current.style.display = "flex"
+                    : viewReplyRef.current.style.display = "none";
+                }
+            }
+            return comment;
+        })
+    }
+
+
+
+    return (
+        <div 
+            className="View_Replies"
+        >
+            <p 
+                className="View_Text" 
+                style={{ display: commentPost.reply.length === 0 ? "none" : "block"  }}
+                onClick={() => hanlde_show_reply_comment(commentPost.id)}
+            >
+                View Replies({commentPost.reply.length})
+            </p>
+
+            <ul 
+                ref={viewReplyRef}
+                className="Reply_Texts"
+                style={{
+                    display: "none"
+                }} 
+            >
+                {
+                    commentPost.reply.map((reply, i) => {
+                        return (
+                            <div className="Reply_User_Container" key={i}>
+                                <li>
+                                    <img 
+                                        src={reply.userImg}  
+                                        alt="none"
+                                        className="User_Reply_Comment_Img"
+                                    />
+                                </li>
+
+                                <li>
+                                    <p>{reply.userName}: </p>
+                                    <p>{reply.text}</p>
+                                </li>
+                            </div>
+                        )
+                    }) 
+                }
+            </ul>
+        </div>
+    )
+}
+
+
+
+export { CommentsBox };
+
+
+
+/* 
+
+            <ul className="Reply_Texts">
+                <li>
+                    <img 
+                        src={userRepliedImg}  
+                        alt="none"
+                        className="User_Reply_Comment_Img"
+                    />
+                </li>
+
+                <li>
+                    <p>{commentPost.userName}: </p>
+                    <p>{commentPost.text}</p>
+                </li>
+            </ul>
+
+
+*/

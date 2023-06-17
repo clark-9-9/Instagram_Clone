@@ -40,7 +40,7 @@ const pageSection = {
 /* ------ Home_Section ------ */
 
 
-.Home_Section{
+.Home_Section {
     position: relative;
     height: 100%;
     width: 100%;
@@ -49,6 +49,10 @@ const pageSection = {
     flex-direction: column;
     overflow-y: scroll;
     /* border: 1px solid rgb(0, 255, 17); */
+}
+
+.Home_Section::-webkit-scrollbar {
+    display: none;
 }
 
 /* ------- Header ------- */
@@ -439,10 +443,13 @@ const pageSection = {
     /* border: 1px solid white; */
 }
 
+
 .User_Name_Caption , #likesNum {
     display: inline;
     font-weight: 600;
 }
+
+#likesNum { user-select: none; }
 
 
 /* 
@@ -574,7 +581,7 @@ const pageSection = {
     height: 80%;
     width: 100%;
     overflow-y: scroll;
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 
@@ -605,7 +612,7 @@ const pageSection = {
 .Center_Single_Comment {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     font-size: 14px;
     /* border: 1px solid white; */
     
@@ -637,11 +644,43 @@ const pageSection = {
 }
 
 
-
 .View_Replies {
-    opacity: 0.8;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     font-size: 13px;
 }
 
+.View_Text {
+    opacity: 0.7;
+}
+
+.Reply_Texts {
+    /* display: flex; */
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
+    display: none;
+}
 
 
+.Reply_User_Container {
+    display: flex;
+    gap: 10px;
+}
+
+.Reply_User_Container p:nth-child(1) {
+    font-weight: 600;
+}
+
+.Reply_User_Container * {
+    display: inline;
+}
+
+.Reply_Texts li img {
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 100%;
+}

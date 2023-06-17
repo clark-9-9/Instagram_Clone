@@ -70,7 +70,7 @@ function Stories() {
                     Users.map((user, i) => {
                         return (
                             <div className='Strory' key={i}>
-                                <img src={profile} />
+                                <img src={profile} alt='none'/>
                                 <p>
                                     {
                                         user.name.length <= 10 

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Users } from "../../data/Users";
 import { SideBarContext } from "../../Context/Side_Bar";
 import IonIcon from "@reacticons/ionicons";
@@ -27,7 +27,7 @@ function Notification() {
             notificationBox.style.visibility = "visible"
             setNotificationBoxMargin("-25rem");
         }
-    }, [screenWidth])
+    }, [screenWidth, setNotificationBoxMargin])
 
     return (
         <div 
@@ -45,7 +45,7 @@ function Notification() {
                     style={{
                         display: screenWidth < 768 ? "block" : "none"
                     }}
-                    onClick={() => handle_notification_box(screenWidth, notificationBoxMargin, setNotificationBoxMargin, setSearchBoxMargin)}
+                    onClick={() => handle_notification_box(screenWidth, setNotificationBoxMargin, setSearchBoxMargin)}
                 ></IonIcon>
             </article>
 
@@ -64,6 +64,7 @@ function Notification() {
                                     <div className="Follow_User_Names">
                                         <img 
                                             src={user.img} 
+                                            alt="none"
                                             className="Follow_User_Image"
                                         /> 
 

@@ -120,15 +120,16 @@ const handle_like_icon = (
         if(user.id === postId) {
             if(user.like.liked === false) {
                 user.like.liked = true;
-                user.like.num++; 
+                user.like.num++;         
             } else {
                 user.like.liked = false;
                 user.like.num--; 
             }
         }
-
-        setPostContent([...postContent]);
+        return user;
     });        
+    
+    setPostContent([...postContent]);        
 };
 
 
@@ -146,6 +147,7 @@ const handle_save_icon = (
             }
 
         }
+        return user;
     });     
 
     setPostContent([...postContent]);
