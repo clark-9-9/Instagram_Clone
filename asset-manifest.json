@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.93ca51e5.css",
-    "main.js": "/static/js/main.d06b68fc.js",
-    "static/media/post1.jpg": "/static/media/post1.ca6d16e879b6a242fc9c.jpg",
-    "static/media/post4.jpg": "/static/media/post4.3c36dd52f7632f6b5801.jpg",
-    "static/media/userRepliedImg.jpg": "/static/media/userRepliedImg.8270d2a200eea588407e.jpg",
-    "static/media/post5.jpg": "/static/media/post5.c481573bc2e66e3144c0.jpg",
-    "static/media/post3.jpg": "/static/media/post3.9b420c903a7435526fb1.jpg",
-    "static/media/post2.jpg": "/static/media/post2.33ddaa70cfc98de71a8a.jpg",
-    "static/media/profile3.jpg": "/static/media/profile3.d69d5b79a1a6afe2307f.jpg",
-    "static/media/post7.jpg": "/static/media/post7.0df11c485396b0382e26.jpg",
-    "static/media/post6.jpg": "/static/media/post6.e5dbbb2030b3470bac43.jpg",
-    "index.html": "/index.html",
-    "main.93ca51e5.css.map": "/static/css/main.93ca51e5.css.map",
-    "main.d06b68fc.js.map": "/static/js/main.d06b68fc.js.map"
+    "main.css": "/Instagram_Clone/static/css/main.93ca51e5.css",
+    "main.js": "/Instagram_Clone/static/js/main.d5edb379.js",
+    "static/media/post1.jpg": "/Instagram_Clone/static/media/post1.ca6d16e879b6a242fc9c.jpg",
+    "static/media/post4.jpg": "/Instagram_Clone/static/media/post4.3c36dd52f7632f6b5801.jpg",
+    "static/media/userRepliedImg.jpg": "/Instagram_Clone/static/media/userRepliedImg.8270d2a200eea588407e.jpg",
+    "static/media/post5.jpg": "/Instagram_Clone/static/media/post5.c481573bc2e66e3144c0.jpg",
+    "static/media/post3.jpg": "/Instagram_Clone/static/media/post3.9b420c903a7435526fb1.jpg",
+    "static/media/post2.jpg": "/Instagram_Clone/static/media/post2.33ddaa70cfc98de71a8a.jpg",
+    "static/media/profile3.jpg": "/Instagram_Clone/static/media/profile3.d69d5b79a1a6afe2307f.jpg",
+    "static/media/post7.jpg": "/Instagram_Clone/static/media/post7.0df11c485396b0382e26.jpg",
+    "static/media/post6.jpg": "/Instagram_Clone/static/media/post6.e5dbbb2030b3470bac43.jpg",
+    "index.html": "/Instagram_Clone/index.html",
+    "main.93ca51e5.css.map": "/Instagram_Clone/static/css/main.93ca51e5.css.map",
+    "main.d5edb379.js.map": "/Instagram_Clone/static/js/main.d5edb379.js.map"
   },
   "entrypoints": [
     "static/css/main.93ca51e5.css",
-    "static/js/main.d06b68fc.js"
+    "static/js/main.d5edb379.js"
   ]
 }
