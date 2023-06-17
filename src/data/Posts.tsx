@@ -1,15 +1,14 @@
 import { nanoid } from "nanoid";
-import post1 from "../Images/Default_young_pale_skinny_white_girl_Black_background_black_a_1_33a4dcf4-3c50-4c22-8213-cabb48cddea0_1.jpg";
-import post2 from "../Images/Leonardo_Diffusion_a_beautiful_and_pretty_warior_girl_with_lon_0 (2).jpg";
-import post3 from "../Images/Leonardo_Diffusion_4k_character_images_01_auto_x2.jpg";
-import post4 from "../Images/Default_Character_Sheet_complex_3d_render_ultra_detailed_of_a_0_3d09cc7e-5017-4542-ba82-8fc89185e70b_1.jpg";
-import post5 from "../Images/Default_dark_fantasy_theme_mystical_zoomed_Dark_theme_underworld_them_0_71119337-d983-48ff-9f20-e315f78c4cb9_1.jpg";
-import post6 from "../Images/Leonardo_Diffusion_greate_warrior_with_matte_white_color_backg_0 (1).jpg";
-import post7 from "../Images/Leonardo_Diffusion_greate_warrior_with_matte_white_color_backg_1.jpg";
-import profile1 from "../Images/Leonardo_Diffusion_a_beautiful_and_pretty_warior_girl_with_lon_0 (2).jpg";
-// import profile2 from "../Images/Leonardo_Diffusion_4k_character_images_0 (1)_auto_x2_light_ai.jpg";
-import profile3 from "../Images/Leonardo_Diffusion_greate_warrior_with_matte_color_background_1.jpg";
-import userRepliedImg from "../Images/Default_full_body_a_young_woman_with_a_mane_of_blonde_hair_her_2_146707eb-7564-4052-935b-e912f245ad47_1.jpg";
+import post1 from "../Images/post1.jpg";
+import post2 from "../Images/post2.jpg";
+import post3 from "../Images/post3.jpg";
+import post4 from "../Images/post4.jpg";
+import post5 from "../Images/post5.jpg";
+import post6 from "../Images/post6.jpg";
+import post7 from "../Images/post7.jpg";
+import profile1 from "../Images/post2.jpg";
+import profile3 from "../Images/profile3.jpg";
+import userRepliedImg from "../Images/userRepliedImg.jpg";
 
 import { IconsType, PostContentType, Comments } from "../Data_Types/Home_Components";
 

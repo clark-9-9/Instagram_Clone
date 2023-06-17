@@ -6,7 +6,7 @@ const SideBar_Links = [
     {
         text: "Home",
         icon: Icons("home SideBarIcons").home,
-        to: "/",
+        to: "/Instagram_Clone",
         class:"Link Home"
     },
     {

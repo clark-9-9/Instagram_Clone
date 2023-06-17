@@ -19,7 +19,7 @@ function App() {
                     className="Pages_Section"
                 >
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        <Route path="/Instagram_Clone" element={<Home />} />
                     </Routes>
                 </section>
             </Fragment>
