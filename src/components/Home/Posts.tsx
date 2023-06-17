@@ -26,7 +26,7 @@ function Posts() {
                             <article className="Post" key={i}>
 
                                 <PostHeader 
-                                    user={user}
+                                    user={user}  
                                 />
 
                                 <PostBody 

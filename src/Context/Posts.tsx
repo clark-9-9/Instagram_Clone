@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from 'react';
+import { useState, createContext } from 'react';
 import { PostContentType, PostContextProviderPropsType, PostValuesType } from "../Data_Types/Home_Components";
 import { Posts_Content } from '../data/Posts';
 

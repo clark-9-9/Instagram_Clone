@@ -1,8 +1,8 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import { Fragment } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Side_Bar } from "./components/Side_Bar/Side_Bar";
+import { SideBar } from "./components/Side_Bar/Side_Bar";
 import { Home } from "./components/Home/Home";
-import { SideBarContext, ContextProvider } from "./Context/Side_Bar";
+import { ContextProvider } from "./Context/Side_Bar";
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     return (
         <ContextProvider>
             <Fragment>
-                <Side_Bar />
+                <SideBar />
 
                 <section 
                     className="Pages_Section"

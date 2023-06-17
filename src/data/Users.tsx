@@ -1,4 +1,4 @@
-import User from "../Images/Default_dark_fantasy_theme_mystical_zoomed_Dark_theme_underworld_them_0_71119337-d983-48ff-9f20-e315f78c4cb9_1.jpg";
+import User from "../Images/post5.jpg";
 import { nanoid } from "nanoid";
 
 interface Users_Type {

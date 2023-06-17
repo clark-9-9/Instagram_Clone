@@ -1,5 +1,5 @@
 import { Icons } from "./icons";
-import profile from "../Images/Default_dark_fantasy_theme_mystical_zoomed_Dark_theme_underworld_them_0_71119337-d983-48ff-9f20-e315f78c4cb9_1.jpg";
+import profile from "../Images/post5.jpg";
 
 
 const SideBar_Links = [
@@ -47,7 +47,7 @@ const SideBar_Links = [
     },
     {
         text: "Profile",
-        img: <img src={profile} className="Profile_Image" />,
+        img: <img src={profile} alt="none" className="Profile_Image" />,
         to: "*",
         class:"Link Profile"
     },
