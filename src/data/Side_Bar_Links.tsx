@@ -6,55 +6,55 @@ const SideBar_Links = [
     {
         text: "Home",
         icon: Icons("home SideBarIcons").home,
-        to: "/Instagram_Clone",
+        to: "/",
         class:"Link Home"
     },
     {
         text: "Search",
         icon: Icons("search SideBarIcons").search,
-        to: "*",
+        to: "/*",
         class:"Link Search"
     },
     {
         text: "Explore",
         icon: Icons("explore SideBarIcons").explore,
-        to: "*",
+        to: "/*",
         class:"Link Explore"
     },
     {
         text: "Reels",
         icon: Icons("reels SideBarIcons").reels,
-        to: "*",
+        to: "/*",
         class:"Link Reels"
     },
     {
         text: "Message",
         icon: Icons("messages SideBarIcons").message,
-        to: "*",
+        to: "/*",
         class:"Link Message" 
     },
     {
         text: "Notification",
         icon: Icons("notification SideBarIcons").notification,
-        to: "*",
+        to: "/*",
         class:"Link Notification"
     },
     {
         text: "Create",
         icon: Icons("create SideBarIcons").create,
-        to: "*",
+        to: "/*",
         class:"Link Create"
     },
     {
         text: "Profile",
         img: <img src={profile} alt="none" className="Profile_Image" />,
-        to: "*",
+        to: "/*",
         class:"Link Profile"
     },
     {
         text: "Menu",
         icon: Icons("menu SideBarIcons").menu,
-        to: "*",
+        to: "/*",
         class:"Link Menu"
     },
 ]
